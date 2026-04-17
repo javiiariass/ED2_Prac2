@@ -3,8 +3,8 @@
 #include <queue>
 #include "arbin.h"
 #include "abb.h"
-#include "Excep_Ej6.h" 
- 
+#include "Excep_Ej6.h"
+
 // Recorridos
 
 template <typename T>
@@ -12,7 +12,7 @@ void inorden(const Arbin<T>& a, const typename Arbin<T>::Iterador& r) {
     if (!r.arbolVacio()) {
         inorden(a, a.subIzq(r));
         cout << r.observar() << " ";
-        inorden(a, a.subDer(r)); 
+        inorden(a, a.subDer(r));
     }
 }
 
@@ -52,6 +52,28 @@ void anchura(const Arbin<T>& a) {
     }
 }
 
+template <typename T>
+void pintarRama(const Arbin<T>& arbol, typename Arbin<T>::Iterador it, int nivel) {
+    if (!it.arbolVacio()) {
+        pintarRama(arbol, arbol.subDer(it), nivel + 1);
+        for (int i = 0; i < nivel; i++) {
+            cout << "    ";
+        }
+        cout << it.observar() << endl;
+        pintarRama(arbol, arbol.subIzq(it), nivel + 1);
+    }
+}
+
+template <typename T>
+void pintarArbol(const Arbin<T>& arbol) {
+    if (arbol.esVacio()) {
+        cout << "[Arbol Vacio]" << endl;
+    } else {
+        pintarRama(arbol, arbol.getRaiz(), 0);
+        cout << "--------------------" << endl;
+    }
+}
+
 
 /***************************************************************************/
 /****************************** EJERCICIOS *********************************/
@@ -82,6 +104,23 @@ int numHojas(const Arbin<T> &arbol){
 /****************************************************************************/
 //Ejercicio 2
 
+template <typename T>
+Arbin<T> creaSimetrico(const Arbin<T> &arbol, typename Arbin<T>::Iterador it){
+    if(it.arbolVacio())
+        return Arbin<T>();
+
+    return Arbin<T>(it.observar(), creaSimetrico(arbol, arbol.subDer(it)), creaSimetrico(arbol, arbol.subIzq(it)));
+}
+
+
+template <typename T>
+Arbin<T> simetrico(const Arbin<T> &arbol){
+    // caso base
+
+
+    return creaSimetrico(arbol, arbol.getRaiz());
+
+}
 
 /****************************************************************************/
 //Ejercicio 3
@@ -145,11 +184,16 @@ int main(int argc, char *argv[])
     ABB<int> BB6, BB7;
 
 
- 
+
     // NUMERO HOJAS //
-    cout << "Num. hojas del arbol B: " << numHojas(B) << endl;
-    cout << "Num. hojas del arbol E: " << numHojas(E) << endl << endl;
-/*
+    cout << "Arbol B: \n";
+    pintarArbol(B);
+    cout << "\nNum. hojas del arbol B: " << numHojas(B) << endl << endl;
+
+    cout << "Arbol E: \n";
+    pintarArbol(E);
+    cout << "\nNum. hojas del arbol E: " << numHojas(E) << endl << endl;
+
     // COPIA SIMETRICA //
     Arbin<char> C = simetrico(B);
     cout << "Recorrido en inorden del arbol B: " << endl;
@@ -158,7 +202,7 @@ int main(int argc, char *argv[])
     inorden(C, C.getRaiz());
     cout << endl << endl;
 
-
+/*
     // RECORRIDO EN ZIG-ZAG //
     cout << "Recorrido en zigzag I de B:\n";
     recorridoZigzag(B, 'I');

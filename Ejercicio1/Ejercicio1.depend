@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1776389505 source:c:\users\javie\documents\github\uni\ed2_prac2\ejercicio1\main.cpp
+	<iostream>
+	"arbin.h"
+
+1773220084 c:\users\javie\documents\github\uni\ed2_prac2\ejercicio1\arbin.h
+	"nodoB.h"
+	"excep_arbin.h"
+
+1773220130 c:\users\javie\documents\github\uni\ed2_prac2\ejercicio1\nodob.h
+	<stdlib.h>
+
+1773220104 c:\users\javie\documents\github\uni\ed2_prac2\ejercicio1\excep_arbin.h
+	"excepcion.h"
+
+1773220121 c:\users\javie\documents\github\uni\ed2_prac2\ejercicio1\excepcion.h
+	<string>
+	<stdexcept>
+
