@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1776393105 source:c:\users\javie\documents\github\uni\ed2_prac2\practica2\main.cpp
+1776398837 source:c:\users\javie\documents\github\uni\ed2_prac2\practica2\main.cpp
 	<iostream>
 	<cstdlib>
 	<queue>
+	<stack>
 	"arbin.h"
 	"abb.h"
 	"Excep_Ej6.h"
